@@ -1,5 +1,5 @@
+import asyncio
 import pygame
-import sys
 
 # 초기화
 pygame.init()
@@ -152,7 +152,7 @@ def reset_game():
 game_duration = 96000
 running = True
 tick = 0
-while running:
+async def main():
     current_time = pygame.time.get_ticks()
 
     # 배경 그리기 및 배경단계 변경 체크
@@ -291,6 +291,7 @@ while running:
 
     pygame.display.flip()
     clock.tick(60)
+    await asyncio.sleep(0)  # 이벤트 루프에 제어권 반환
 
+asyncio.run(main())
 pygame.quit()
-sys.exit()
